@@ -8,7 +8,7 @@ URL = 'https://finance.yahoo.com/quote/%5EGSPC/history?period1=1268179200&period
 HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/80.0.3987.122 Safari/537.36', 'accept': '*/*'}
 
-FILE = 's_and_p_index_data.csv'
+FILE = 's_and_p_index_data_1.csv'
 
 
 def get_html(url, params=None):
@@ -63,10 +63,10 @@ def calculate_periods():
     diff = 7862400
     periods = []
     i = int(0)
-    while i < 100:
+    while i < 200:
         periods.append({'period_1': period_1, 'period_2': period_2})
-        period_2 = period_1
-        period_1 = period_1 - diff
+        period_2 -= diff
+        period_1 -= diff
         i += 1
     return periods
 
